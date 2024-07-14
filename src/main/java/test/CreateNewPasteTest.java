@@ -6,12 +6,23 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import page.HomePage;
+<<<<<<< HEAD
+=======
+import page.PasteCreationPage;
+>>>>>>> a3e6d1f (task1 updated with feedback)
 
 import static org.junit.Assert.assertEquals;
 
 public class CreateNewPasteTest {
     private WebDriver driver;
 
+<<<<<<< HEAD
+=======
+    String pasteCodeText= "Hello from WebDriver";
+    String pasteNameText= "helloweb";
+
+
+>>>>>>> a3e6d1f (task1 updated with feedback)
     @Before
     public void setUp() {
         driver = new ChromeDriver();
@@ -19,6 +30,7 @@ public class CreateNewPasteTest {
 
     @Test
     public void createNewPaste() {
+<<<<<<< HEAD
         HomePage validatePasteCreation = new HomePage()
                 .openPage(driver)
                 .sendData(driver, HomePage.NEW_PASTE_TEXT_INPUT, "Hello from WebDriver")
@@ -29,6 +41,25 @@ public class CreateNewPasteTest {
 
         // Asserts
         assertEquals("Hello from WebDriver", validatePasteCreation.getText(driver, HomePage.CREATED_PASTE_TEXT));
+=======
+        //Step 1 Open https://pastebin.com/ or a similar service in any browser.
+        HomePage homePage = new HomePage(driver);
+        homePage.openPage();
+        //Step 2 Create 'New Paste' with the following attributes:
+        //enter paste code
+        homePage.enterPasteCode(pasteCodeText);
+        //select Expiration
+        homePage.selectExpirationOption(2);
+        // enter Paste Name
+        homePage.enterPasteName(pasteNameText);
+        // click create new paste btn
+        homePage.clickCreateNewPasteBtn();
+
+        // validate paste created in new page
+        PasteCreationPage pasteCreationPage = new PasteCreationPage(driver);
+        assertEquals(pasteCodeText, pasteCreationPage.getText());
+
+>>>>>>> a3e6d1f (task1 updated with feedback)
     }
 
     @After
